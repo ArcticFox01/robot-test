@@ -3,7 +3,7 @@ Library    RequestsLibrary
 Library    OperatingSystem
 Library    Collections
 Library    json
-Test Teardown    Delete All Sessions
+Suite Teardown    Delete All Sessions
 
 # 2. Use a Suite Setup to create the bypassing session once
 Suite Setup    Run Keywords    Disable SSL Warnings    AND    Create Bypassing Session Setup
