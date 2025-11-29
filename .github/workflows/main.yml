@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest # Or your preferred runner environment
 
     permissions:
+      contents: write
       pull-requests: write # This is crucial for commenting on PRs/Commits
       statuses: write
 
