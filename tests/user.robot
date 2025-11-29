@@ -5,34 +5,39 @@ Library    Collections
 Library    JsonValidator
 Test Teardown    Delete All Sessions
 
+Suite Setup    Run Keywords    Disable SSL Warnings
+
 *** Variables ***
 ${BASE_URL}    https://fakestoreapi.com
 ${PRODUCT_DATA}    ${CURDIR}/../data/api/product/
 
 *** Keywords ***
+Disable SSL Warnings
+    ${disable_warnings}=    Evaluate    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)    modules=urllib3, urllib3.exceptions
+
 GET Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}
     ${headers}=    Create Dictionary
-    Create Session    ${BASE_URL}    ${BASE_URL}    auth=
-    ${response}=    GET On Session    ${BASE_URL}    ${PATH_URL}    expected_status=any
+    Create Session    ${BASE_URL}    ${BASE_URL}    auth=    verify=False
+    ${response}=    GET On Session    ${BASE_URL}    ${PATH_URL}    expected_status=any    verify=False
     RETURN    ${response}
 
 POST Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
-    ${response}=    POST On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
+    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
+    ${response}=    POST On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
     RETURN    ${response}
 
 PUT Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
-    ${response}=    PUT On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
+    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
+    ${response}=    PUT On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
     RETURN    ${response}
     
 DELETE Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
-    ${response}=    DELETE On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
+    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
+    ${response}=    DELETE On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
     RETURN    ${response}
 
 *** Test Cases ***
