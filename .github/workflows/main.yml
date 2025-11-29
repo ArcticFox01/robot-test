@@ -46,3 +46,8 @@ jobs:
         path: ./results
         name: robot-test-results
         retention-days: 3
+
+    - name: Send report to commit
+      uses: joonvena/robotframework-reporter-action@v2.5
+      with:
+        gh_access_token: ${{ secrets.GITHUB_TOKEN }}    
