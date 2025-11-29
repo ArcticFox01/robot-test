@@ -3,5 +3,9 @@
   "price": 0.1,
   "description": "test",
   "category": "test",
-  "image": "http://example.com"
+  "image": "http://example.com",
+  "rating": {
+    "rate": 3.9,
+    "count": 120
+  }
 }
