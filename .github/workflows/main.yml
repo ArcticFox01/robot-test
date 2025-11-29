@@ -1,0 +1,37 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Or your preferred runner environment
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12.4' # Specify your desired Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install robotframework robotframework-requests
+        
+    - name: Run Robot Framework tests
+      run: |
+        robot --outputdir results --exclude skip tests
+        echo "Script execution completed"
+      continue-on-error: true
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        path: ./results
+        name: robot-test-results
+        retention-days: 3
