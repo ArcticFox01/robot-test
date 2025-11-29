@@ -2,7 +2,6 @@
 Library    RequestsLibrary
 Library    OperatingSystem
 Library    Collections
-Library    JsonValidator
 Test Teardown    Delete All Sessions
 
 Suite Setup    Run Keywords    Disable SSL Warnings
