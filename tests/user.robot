@@ -18,26 +18,26 @@ Disable SSL Warnings
 GET Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}
     ${headers}=    Create Dictionary
-    Create Session    ${BASE_URL}    ${BASE_URL}    auth=    verify=False
-    ${response}=    GET On Session    ${BASE_URL}    ${PATH_URL}    expected_status=any    verify=False
+    Create Session    ${BASE_URL}    ${BASE_URL}
+    ${response}=    GET On Session    ${BASE_URL}    ${PATH_URL}    expected_status=any
     RETURN    ${response}
 
 POST Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
-    ${response}=    POST On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
+    Create Session    ${BASE_URL}    ${BASE_URL}
+    ${response}=    POST On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
 
 PUT Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
-    ${response}=    PUT On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
+    Create Session    ${BASE_URL}    ${BASE_URL}
+    ${response}=    PUT On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
     
 DELETE Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}    verify=False
-    ${response}=    DELETE On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any    verify=False
+    Create Session    ${BASE_URL}    ${BASE_URL}
+    ${response}=    DELETE On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
 
 *** Test Cases ***
