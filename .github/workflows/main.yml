@@ -50,4 +50,5 @@ jobs:
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v2.5
       with:
+        path: ./results
         gh_access_token: ${{ secrets.GITHUB_TOKEN }}    
