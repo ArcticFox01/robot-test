@@ -17,26 +17,29 @@ Disable SSL Warnings
 
 GET Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}
-    ${headers}=    Create Dictionary
-    Create Session    ${BASE_URL}    ${BASE_URL}
+    &{headers}=    Create Dictionary    User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+    Create Session    ${BASE_URL}    ${BASE_URL}    headers=${headers}
     ${response}=    GET On Session    ${BASE_URL}    ${PATH_URL}    expected_status=any
     RETURN    ${response}
 
 POST Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
+    &{headers}=    Create Dictionary    User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+    Create Session    ${BASE_URL}    ${BASE_URL}    headers=${headers}
     ${response}=    POST On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
 
 PUT Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
+    &{headers}=    Create Dictionary    User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+    Create Session    ${BASE_URL}    ${BASE_URL}    headers=${headers}
     ${response}=    PUT On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
     
 DELETE Resp API
     [Arguments]    ${BASE_URL}=${BASE_URL}    ${PATH_URL}=${/}    ${payload}=${EMPTY}
-    Create Session    ${BASE_URL}    ${BASE_URL}
+    &{headers}=    Create Dictionary    User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+    Create Session    ${BASE_URL}    ${BASE_URL}    headers=${headers}
     ${response}=    DELETE On Session    ${BASE_URL}    ${PATH_URL}    json=${payload}    expected_status=any
     RETURN    ${response}
 
