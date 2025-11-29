@@ -9,6 +9,9 @@ jobs:
   test:
     runs-on: ubuntu-latest # Or your preferred runner environment
 
+    permissions:
+      pull-requests: write # This is crucial for commenting on PRs/Commits
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4  
